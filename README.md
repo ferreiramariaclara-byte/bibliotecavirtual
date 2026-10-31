@@ -1,2 +1,0 @@
-# bibliotecavirtual
-projeto academico
