@@ -1,0 +1,54 @@
+document.addEventListener("DOMContentLoaded", () => {
+    // --- 1. FILTRAGEM DO CATÁLOGO ---
+    const campoBusca = document.getElementById("campo-busca");
+    const filtroGenero = document.getElementById("filtro-genero");
+    const filtroIdade = document.getElementById("filtro-idade");
+    const livros = document.querySelectorAll(".grade-livros .livro");
+
+    function aplicarFiltros() {
+        const termoBusca = campoBusca.value.toLowerCase().trim();
+        const generoSelecionado = filtroGenero.value;
+        const idadeSelecionada = filtroIdade.value;
+
+        livros.forEach(livro => {
+            const titulo = livro.textContent.toLowerCase();
+            const genero = livro.dataset.genero;
+            const idade = livro.dataset.idade;
+
+            const atendeBusca = titulo.includes(termoBusca);
+            const atendeGenero = (generoSelecionado === "todos" || genero === generoSelecionado);
+            const atendeIdade = (idadeSelecionada === "todas" || idade === idadeSelecionada);
+
+            if (atendeBusca && atendeGenero && atendeIdade) {
+                livro.style.display = "block";
+            } else {
+                livro.style.display = "none";
+            }
+        });
+    }
+
+    campoBusca.addEventListener("input", aplicarFiltros);
+    filtroGenero.addEventListener("change", aplicarFiltros);
+    filtroIdade.addEventListener("change", aplicarFiltros);
+
+    const formSugestao = document.getElementById("form-sugestao");
+    const campoNome = document.getElementById("nome");
+    const campoTitulo = document.getElementById("titulo-livro");
+    const mensagemFeedback = document.getElementById("mensagem-feedback");
+
+    formSugestao.addEventListener("submit", (evento) => {
+        evento.preventDefault();
+
+        const nome = campoNome.value.trim();
+        const titulo = campoTitulo.value.trim();
+
+        if (nome && titulo) {
+            mensagemFeedback.textContent = `Obrigado, ${nome}! A sua sugestão para o livro "${titulo}" foi enviada com sucesso.`;
+            mensagemFeedback.style.color = "#2e7d32";
+            formSugestao.reset();
+        } else {
+            mensagemFeedback.textContent = "Por favor, preencha todos os campos obrigatórios.";
+            mensagemFeedback.style.color = "#c62828";
+        }
+    });
+});
