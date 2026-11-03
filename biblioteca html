@@ -1,1 +1,80 @@
+<!doctype html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Biblioteca Virtual</title>
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+      <header>
+         <h1>Biblioteca Virtual</h1>
+         <nav>
+            <a href="#catalogo">Catálogo de Livros</a>
+            <a href="#sugestoes">Sugerir Aquisição</a>
+         </nav>
+      </header>
 
+      <main> 
+         <section id="catalogo">
+            <h2>Nosso Acervo</h2>
+            <label for="campo-busca">Pesquisar Livro:</label>
+            <input type="search" id="campo-busca" placeholder="Digite o título...">
+
+            <div class="filtros-extras" style="margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+               <div>
+                  <label for="filtro-genero">Gênero:</label>
+                  <select id="filtro-genero" style="padding: 0.5rem; margin-top: 0.3rem; display: block;">
+                     <option value="todos">Todos os Gêneros</option>
+                     <option value="romance">Romance</option>
+                     <option value="fantasia">Fantasia</option>
+                     <option value="ficcao">Ficção Científica</option>
+                  </select>
+               </div>
+               <div>
+                  <label for="filtro-idade">Faixa Etária:</label>
+                  <select id="filtro-idade" style="padding: 0.5rem; margin-top: 0.3rem; display: block;">
+                     <option value="todas">Todas as Idades</option>
+                     <option value="infantil">Infantil</option>
+                     <option value="juvenil">Juvenil</option>
+                     <option value="adulto">Adulto</option>
+                  </select>
+               </div>
+            </div>
+            
+            <div class="grade-livros">
+               <article class="livro" data-genero="romance" data-idade="adulto">Como Eu Era Antes De Você</article>
+               <article class="livro" data-genero="fantasia" data-idade="infantil">O Pequeno Príncipe</article>
+               <article class="livro" data-genero="ficcao" data-idade="juvenil">Fahrenheit 451</article>
+               <article class="livro" data-genero="ficcao" data-idade="adulto">1984</article>
+               <article class="livro" data-genero="romance" data-idade="juvenil">Orgulho e Preconceito</article>
+               <article class="livro" data-genero="fantasia" data-idade="adulto">O Senhor dos Anéis</article>
+            </div>
+         </section>
+         
+         <section id="sugestoes">
+            <h2>Sugerir Novo Livro</h2>
+            <form id="form-sugestao" action="#" method="post">
+               <div>
+                  <label for="nome">Seu Nome</label>
+                  <input type="text" id="nome" required>
+               </div>
+
+               <div>
+                  <label for="titulo-livro">Título da Obra</label>
+                  <input type="text" id="titulo-livro" required>
+               </div>
+                
+               <button type="submit">Enviar Sugestão Aqui!</button>
+            </form>
+            <p id="mensagem-feedback"></p>
+         </section>         
+      </main>
+
+      <footer>
+         <a href="#">Voltar ao topo</a>
+      </footer>
+      
+      <script src="app.js" defer></script>
+   </body>
+</html>
