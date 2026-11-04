@@ -190,7 +190,6 @@ section h2 {
     font-size: 0.95rem;
 }
 
-/* --- RODAPÉ --- */
 footer {
     background-color: var(--card-bg);
     padding: 20px 40px;
@@ -212,7 +211,6 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/*  RESPONSIVIDADE (MOBILE) */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
